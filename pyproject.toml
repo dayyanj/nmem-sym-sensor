@@ -1,0 +1,103 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nmem-sym-sensor"
+version = "0.2.0"
+description = "Sensory Memory — Visual and auditory cognition layer for nmem-sym"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.11"
+authors = [
+    { name = "Dayyan Janjua" },
+]
+
+dependencies = [
+    "asyncpg>=0.29",
+    "numpy>=1.26",
+    "sentence-transformers>=3.0",
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+]
+
+[project.optional-dependencies]
+visual = [
+    "opencv-python-headless>=4.8",
+]
+visual-sam2 = [
+    "nmem-sym-sensor[visual]",
+    "torch>=2.1",
+    "segment-anything-2>=0.1; python_version>='3.11'",
+]
+audio = [
+    "soundfile>=0.12",
+]
+live = [
+    "nmem-sym-sensor[visual,audio]",
+    "sounddevice>=0.5",
+]
+inference = [
+    "onnxruntime>=1.16",
+]
+train = [
+    "torch>=2.1",
+    "tqdm>=4.66",
+    "opencv-python-headless>=4.8",
+    "soundfile>=0.12",
+    "Pillow>=10.0",
+]
+ingest = [
+    "nmem-sym-sensor[visual,audio]",
+    "openai-whisper>=20231117",
+]
+all = [
+    "nmem-sym-sensor[visual,audio,inference,train,ingest]",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "nmem-sym-sensor[all]",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nmem_sym_sensor"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "integration: marks tests requiring PostgreSQL (deselect with '-m \"not integration\"')",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+# Documented, deliberate relaxations for this math/DB-heavy sensor layer:
+#   E501 — line-too-long fires almost entirely on inline SQL and log-format
+#          literals; per ruff's own guidance the formatter (not the linter)
+#          owns line length. Kept off the lint gate; re-enable once SQL is
+#          extracted / a formatter pass lands.
+#   N803/N806/N812 — scientific/tensor naming (X, N, TAU, `import torch.nn.functional as F`)
+#          is idiomatic here; enforcing snake_case would fight the math.
+# The high-signal correctness rules (F-family, most of E/W/UP) stay ON.
+ignore = ["E501", "N803", "N806", "N812"]
+
+[tool.ruff.lint.per-file-ignores]
+# Research/training drivers and neural-model modules — not part of the importable
+# appliance runtime library. Held out of the lint gate (kept buildable, not styled).
+"scripts/**" = ["E402", "F841", "E701", "E702"]
+"src/nmem_sym_sensor/tabula2/**" = ["E402", "W293"]
+# Diagnostic dashboard is deliberately laid out as HTML-templates-then-app with a
+# few late/override imports interleaved with route definitions; not core runtime.
+"src/nmem_sym_sensor/dashboard.py" = ["E402"]
+
+[tool.mypy]
+# Target: strict=true (matching nmem/nmem-sym v1.0.0). Held back until H1 lands the
+# typed SensorConfig — the repo currently has ~78 raw os.environ.get and no type
+# discipline, so strict here would be a wall of errors before the config refactor.
+python_version = "3.11"
+warn_unused_configs = true

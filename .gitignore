@@ -1,0 +1,33 @@
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+.env
+
+# --- research/training artifacts, data, model binaries, logs (NOT source) ---
+# Model weights + checkpoints are large binaries — distribute out-of-band, not in git.
+models/
+checkpoints/
+checkpoints_*/
+*.onnx
+*.pt
+*.pth
+*.npz
+*.ckpt
+# Data / media
+videos/
+test_images/
+training_data/
+sensory_data/
+training/
+# Logs + scratch
+*.log
+.tmp/
+.pytest_cache/
+# internal working design notes (public design lives in docs/)
+/_design/
