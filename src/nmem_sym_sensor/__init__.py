@@ -7,7 +7,7 @@ grounds the resulting concepts to the symbolic graph.
 
 No classification — the system learns what things are through experience.
 """
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 from nmem_sym_sensor.api import SensorGraph
 from nmem_sym_sensor.audio import AudioAnalysis, AudioPrimitive, TemporalRelation

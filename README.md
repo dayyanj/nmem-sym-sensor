@@ -1,5 +1,7 @@
 # nmem-sym-sensor
 
+> ⚠️ **Experimental — under active development.** This project is mid-build: APIs, schemas, and behaviour may change without notice, and it is not yet recommended for production use.
+
 **Sensory Memory — Visual and Auditory Cognition for AI Agents**
 
 Layer 0 companion to [nmem-sym](https://github.com/dayyanj/nmem-sym). Decomposes visual and audio inputs into unlabeled primitives, clusters them through repeated observation, and grounds the resulting concepts to the symbolic graph.

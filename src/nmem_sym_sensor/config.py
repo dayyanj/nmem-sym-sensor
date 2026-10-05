@@ -170,7 +170,7 @@ settings = SensorConfig()
 # ══════════════════════════════════════════════════════════════════════════════
 # Compat shim — legacy module-level names, sourced from `settings`.
 # New code should prefer `config.settings.<field>`; these are kept so the ~78
-# existing `config.X` call sites across the repo (and michelle) keep working.
+# existing `config.X` call sites across the repo keep working.
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Database ──

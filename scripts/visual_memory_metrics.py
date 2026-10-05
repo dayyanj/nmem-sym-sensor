@@ -16,7 +16,7 @@ fall once the read-back is doing its job. Also reports steps-to-completion if a 
 available (best-effort). No writes — read-only.
 
 Usage:
-    NMEM_SENSOR_DB_DSN=postgresql://…/agent_db python scripts/visual_memory_metrics.py [--agent michelle] [--radius 8]
+    NMEM_SENSOR_DB_DSN=postgresql://…/agent_db python scripts/visual_memory_metrics.py [--agent example-agent] [--radius 8]
 """
 import argparse
 import asyncio
@@ -125,7 +125,7 @@ async def main() -> int:
         print("A genuine advantage = ON-arm rate materially BELOW the OFF-arm rate on comparable n.")
     else:
         print("REPEATED-FAILURE RATE: n/a — no failed screen has been revisited yet.")
-        print("(Need more pursuits over the same screens; the metric fills in as michelle runs.)")
+        print("(Need more pursuits over the same screens; the metric fills in as the agent runs.)")
     return 0
 
 

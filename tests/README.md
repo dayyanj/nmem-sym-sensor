@@ -9,7 +9,7 @@ Two lanes (mirrors nmem / nmem-sym):
 
 The `clean_pool` fixture **drops and recreates the `public` schema** on every
 use, so it must only ever point at a disposable database — never a live agent DB
-(e.g. `michelle_ai`).
+(e.g. a production agent database).
 
 Spin up a throwaway container:
 

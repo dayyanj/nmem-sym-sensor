@@ -7,7 +7,7 @@ PostgreSQL + pgvector and are marked ``integration`` (deselect with
 
 Point ``NMEM_SENSOR_TEST_DSN`` at a THROWAWAY database — the ``clean_pool``
 fixture DROPs and recreates the ``public`` schema on every use, so it must never
-touch a live agent DB (e.g. michelle_ai). If no test DB is reachable the
+touch a live agent DB (e.g. agent_m_ai). If no test DB is reachable the
 integration tests skip rather than fail. The default DSN targets the disposable
 container described in ``tests/README.md``.
 """

@@ -61,7 +61,7 @@ class VocalTract:
             import os
             default_path = os.path.join(
                 os.path.dirname(__file__), "..", "..", "checkpoints",
-                "voice_profile_dayyan_subfeatures.npz",
+                "voice_profile_subfeatures.npz",
             )
             if os.path.exists(default_path):
                 voice_profile_path = default_path

@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "nmem-sym-sensor"
-version = "0.2.0"
+version = "0.3.0"
 description = "Sensory Memory — Visual and auditory cognition layer for nmem-sym"
 readme = "README.md"
 license = {file = "LICENSE"}
 requires-python = ">=3.11"
 authors = [
-    { name = "Dayyan Janjua" },
+    { name = "Dayyan James" },
 ]
 
 dependencies = [

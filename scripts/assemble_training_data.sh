@@ -5,7 +5,7 @@
 
 set -e
 
-OUT_DIR="${1:-/home/dayyan/diffusion_training_data}"
+OUT_DIR="${1:-${HOME}/diffusion_training_data}"
 NAS="/mnt/nas_datasets"
 PRIMS="/mnt/nas_projects/apps/nmem-sym-sensor/training_data/primitives_128"
 
