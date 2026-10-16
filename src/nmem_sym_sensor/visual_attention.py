@@ -7,7 +7,7 @@ attention outward. The system decides WHERE to look using motion
 detection, edge saliency, and temporal persistence, then delegates
 detailed visual analysis to the existing stateless encoder.
 
-Based on prior research: https://dj-ai.ai/?page=fovea-vision-for-computer-vision
+Based on prior foveal-vision research.
 
 Key mechanisms:
   1. Optical flow motion detection (DIS, FAST preset)
